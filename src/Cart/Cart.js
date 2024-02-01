@@ -33,6 +33,10 @@ module.exports = class Cart {
         return total;
     }
 
+    count() {
+        return this.items.length;
+    }
+
     //region private methods
     //endregion private methods
 }
