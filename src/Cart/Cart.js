@@ -34,7 +34,11 @@ module.exports = class Cart {
     }
 
     count() {
-        return this.items.length;
+        let total = 0;
+        for(let item of this.items)
+            total += item.quantity;
+
+        return total;
     }
 
     //region private methods
