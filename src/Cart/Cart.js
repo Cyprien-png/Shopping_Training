@@ -1,6 +1,7 @@
 "use strict";
 
 const EmptyCartException = require("./EmptyCartException.js");
+const UpdateCartException = require("./UpdateCartException.js");
 
 module.exports = class Cart {
 
@@ -45,6 +46,9 @@ module.exports = class Cart {
     }
 
     add(items) {
+        if(!items)
+            throw new UpdateCartException();
+
         if (!this._items)
             this.items = [];
 
