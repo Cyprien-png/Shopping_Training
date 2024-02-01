@@ -6,7 +6,7 @@
  * @version   23-02-2023 - update for first eval
  */
 
-let Cart = require('../Cart/Cart.js');
+const Cart = require('../Cart/Cart.js');
 const CartItem = require("../CartItem/CartItem.js");
 const EmptyCartException = require("../Cart/EmptyCartException.js");
 const UpdateCartException = require("../Cart/UpdateCartException.js");
