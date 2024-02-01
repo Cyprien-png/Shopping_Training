@@ -35,18 +35,19 @@ module.exports = class Cart {
     }
 
     count(checkQuantity = false) {
-        if (checkQuantity)
-            return this.items.length;
+        return checkQuantity ? this._totalItemsCount() : this._totalItemsQuantity();
+    }
 
-        let total = 0;
-        for (let item of this.items)
-            total += item.quantity;
+    _totalItemsCount() {
+        return this.items.length;
+    }
 
-        return total;
+    _totalItemsQuantity() {
+        return this.items.reduce((totalQuantity, item) => totalQuantity + item.quantity, 0);
     }
 
     add(items) {
-        if(!items)
+        if (!items)
             throw new UpdateCartException();
 
         if (!this._items)
