@@ -5,7 +5,7 @@ const EmptyCartException = require("./EmptyCartException.js");
 module.exports = class Cart {
 
     //region private attributes
-    _items;
+    _items = [];
     //endregion private attributes
 
     //region public methods
@@ -22,12 +22,12 @@ module.exports = class Cart {
     }
 
     set items(value) {
-      this._items = value;
+        this._items = value;
     }
 
     get total() {
         let total = 0;
-        for(let item of this.items)
+        for (let item of this.items)
             total += item.total;
 
         return total;
@@ -38,10 +38,17 @@ module.exports = class Cart {
             return this.items.length;
 
         let total = 0;
-        for(let item of this.items)
+        for (let item of this.items)
             total += item.quantity;
 
         return total;
+    }
+
+    add(items) {
+        if (!this._items)
+            this.items = [];
+
+        this._items.push(...items);
     }
 
     //region private methods
