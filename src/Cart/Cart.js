@@ -33,7 +33,10 @@ module.exports = class Cart {
         return total;
     }
 
-    count() {
+    count(checkQuantity = false) {
+        if (checkQuantity)
+            return this.items.length;
+
         let total = 0;
         for(let item of this.items)
             total += item.quantity;
