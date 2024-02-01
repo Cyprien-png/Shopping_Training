@@ -15,11 +15,14 @@ module.exports = class Cart {
 
     //endregion public methods
     get items() {
+        if (!this._items)
+            throw new EmptyCartException();
+
         return this._items;
     }
 
     set items(value) {
-        this._items = value;
+      this._items = value;
     }
 
     //region private methods
