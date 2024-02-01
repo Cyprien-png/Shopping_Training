@@ -18,15 +18,11 @@ module.exports = class CartItem {
 
         if (articleId < 1)
             throw new InvalidArticleIdException();
-        if (quantity < 1)
-            throw new InvalidQuantityException();
-        if (price < 10)
-            throw new InvalidPriceException();
 
         this._articleId = articleId;
         this._name = name;
-        this._quantity = quantity;
-        this._price = price;
+        this.quantity = quantity;
+        this.price = price;
     }
 
     get articleId() {
@@ -42,6 +38,9 @@ module.exports = class CartItem {
     }
 
     set quantity(value) {
+        if (value < 1)
+            throw new InvalidQuantityException();
+
         this._quantity = value;
     }
 
@@ -50,6 +49,9 @@ module.exports = class CartItem {
     }
 
     set price(value) {
+        if (value < 10)
+            throw new InvalidPriceException();
+
         this._price = value;
     }
 
