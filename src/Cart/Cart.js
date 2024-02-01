@@ -27,11 +27,7 @@ module.exports = class Cart {
     }
 
     get total() {
-        let total = 0;
-        for (let item of this.items)
-            total += item.total;
-
-        return total;
+        return this.items.reduce((totalQuantity, item) => totalQuantity + item.total, 0);
     }
 
     count(checkQuantity = false) {
