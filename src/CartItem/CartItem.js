@@ -20,6 +20,8 @@ module.exports = class CartItem {
             throw new InvalidArticleIdException();
         if (quantity < 1)
             throw new InvalidQuantityException();
+        if (price < 10)
+            throw new InvalidPriceException();
 
         this._articleId = articleId;
         this._name = name;
